@@ -8,6 +8,7 @@ import { User } from '../_models/index';
 
 @Injectable()
 export class UserService {
+    private url = 'http://127.0.0.1:8000/users/';
     constructor(
         private http: Http,
         private authenticationService: AuthenticationService) {
@@ -19,7 +20,7 @@ export class UserService {
         let options = new RequestOptions({ headers: headers });
 
         // get users from api
-        return this.http.get('/api/users', options)
+        return this.http.get(this.url, options)
             .map((response: Response) => response.json());
     }
 }

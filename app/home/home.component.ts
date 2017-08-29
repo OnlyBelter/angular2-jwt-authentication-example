@@ -9,16 +9,19 @@ import { UserService } from '../_services/index';
 })
 
 export class HomeComponent implements OnInit {
-    users: User[] = [];
+    // users: User[] = [];
+    private user: string;
 
     constructor(private userService: UserService) { }
 
     ngOnInit() {
         // get users from secure api end point
-        this.userService.getUsers()
-            .subscribe(users => {
-                this.users = users;
-            });
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.user = currentUser.username;
+        // this.userService.getUsers()
+        //     .subscribe(users => {
+        //         this.users = users;
+        //     });
     }
 
 }
